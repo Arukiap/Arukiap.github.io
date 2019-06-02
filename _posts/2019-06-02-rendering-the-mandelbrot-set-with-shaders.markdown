@@ -24,24 +24,37 @@ I also greatly encourage you to visit [Inigo Quilez](https://www.iquilezles.org/
 # The mandelbrot set
 
 Taking the definition straight out of its [Wikipedia page](https://www.shadertoy.com/), the mandelbrot set is a set of complex numbers c for which the function
+
 $$ f_c(z) = z^2 + c $$
+
 stays bounded between a certain range of values when iterated from z = 0.
 
 ## Complex numbers
 
 Now, **don't let the complex numbers scare you**. A complex number is, as you might know, a number that has two distinct components: a real and an imaginary one. Thus, we can represent a complex number by using a two-dimensional vector, where the x component represents the real part of the number, and the y component represents the imaginary part. We will use z to denote our complex number.
+
 $$ z = x + yi $$
+
 $$ z = vec2(x,y) $$
+
 Now, the only thing we need to worry about when doing math on imaginary numbers is the following property for this set:
+
 $$ i^2 = -1 $$
+
 Let's try to substitute the complex number z in the mandelbrot set function:
+
 $$ f_c(z) = z^2 + c = (x + yi)^2 + c = (x^2 + y^2i^2 + 2xyi) + c = x^2 - y^2 + 2xyi + c $$
+
 And using the two-dimensional vector representation for the complex number system we have:
+
 $$ f_c((x,y)_z) = (x^2-y^2,2xy)_z + (x,y)_c $$
 
 We now have all that is necessary to start rendering the mandelbrot set. We just need to iterate this function and see which values remain bounded in
+
 $$ |z_n+1| <= 2 $$
+
 or in other words, applying this to the vector representation
+
 $$ |(x,y)_z| <= 2 $$
 
 
