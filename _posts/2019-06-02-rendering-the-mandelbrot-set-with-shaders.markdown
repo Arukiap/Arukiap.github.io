@@ -29,10 +29,10 @@ stays bounded between a certain range of values when iterated from z = 0.
 ## Complex numbers
 
 Now, **don't let the complex numbers scare you**. A complex number is, as you might know, a number that has two distinct components: a real and an imaginary one. Thus, we can represent a complex number by using a two-dimensional vector, where the x component represents the real part of the number, and the y component represents the imaginary part. We will use z to denote our complex number.
-$$ z = x + yi$$
-$$ z = vec2(x,y)$$
+$$ z = x + yi $$
+$$ z = vec2(x,y) $$
 Now, the only thing we need to worry about when doing math on imaginary numbers is the following property for this set:
-$$ i^2 = -1$$
+$$ i^2 = -1 $$
 Let's try to substitute the complex number z in the mandelbrot set function:
 $$ f_c(z) = z^2 + c = (x + yi)^2 + c = (x^2 + y^2i^2 + 2xyi) + c = x^2 - y^2 + 2xyi + c $$
 And using the two-dimensional vector representation for the complex number system we have:
@@ -48,7 +48,7 @@ $$ |(x,y)_z| <= 2 $$
 
 Now that we have our maths figured out, let's open up our fragment shader and write the core function of our application: the iteration over the function that defines the mandelbrot set.
 
-```GLSL
+~~~GLSL
 vec2 squareImaginary(vec2 number){
 	return vec2(
 		pow(number.x,2)-pow(number.y,2),
@@ -64,7 +64,7 @@ float iterateMandelbrot(vec2 coord){
 	}
 	return maxIterations;
 }
-```
+~~~
 
 This function runs once every pixel of the screen. The coord 2D vector represents the current selected pixel coordinates. This works great because in mandelbrot plots, the y axis represents the imaginary part of the complex number and the x the real part.
 
@@ -72,18 +72,14 @@ We just follow the exact function definition we listed before, and return a valu
 
 This produces the following image (Maximum number of iterations = 100):
 
-<p align="center">
-<img src=../assets/mandelbrot/mandelbrot1bright.png/>
-</p>
+![](../assets/mandelbrot/mandelbrot1bright.png)
 
 ## Zooming in
 
 By implementing a simple interaction of zooming in and exploring the set, we can already start to see the complexity and beauty of this set.
 
-<p align="center">
-<img src=../assets/mandelbrot/mandelbrot2bright.png width="400" height="300"/>
-<img src=../assets/mandelbrot/mandelbrot3bright.png width="400" height="300"/>
-</p>
+![](../assets/mandelbrot/mandelbrot2bright.png)
+![](../assets/mandelbrot/mandelbrot3bright.png)
 
 But we surely don't want to stop here. While these images look great and mysterious, more beauty can be brought out of the plot representation of this set if we color it based on mathematical rules.
 
@@ -93,20 +89,12 @@ To color our mandelbrot plot, we are going to use a popular technique used to co
 
 A common point to compare the distance to is the origin (0,0). Doing so produces the following coloring of our set:
 
-<p align="center">
-<img src=../assets/mandelbrot/mandelbrotOT1.png width="400" height="300"/>
-<img src=../assets/mandelbrot/mandelbrotOT2.png width="400" height="300"/>
-</p>
-
-<p align="center">
-<img src=../assets/mandelbrot/mandelbrotOT3.png width="400" height="300"/>
-<img src=../assets/mandelbrot/mandelbrotOT4.png width="400" height="300"/>
-</p>
-
-<p align="center">
-<img src=../assets/mandelbrot/mandelbrotOT7.png width="400" height="300"/>
-<img src=../assets/mandelbrot/mandelbrotOT6.png width="400" height="300"/>
-</p>
+![](../assets/mandelbrot/mandelbrotOT1.png)
+![](../assets/mandelbrot/mandelbrotOT2.png)
+![](../assets/mandelbrot/mandelbrotOT3.png)
+![](../assets/mandelbrot/mandelbrotOT4.png)
+![](../assets/mandelbrot/mandelbrotOT7.png)
+![](../assets/mandelbrot/mandelbrotOT6.png)
 
 Because this is usually refered to as art, you can color the fractal however you feel like. Feel free to experiment: most of the images I posted here took a lot of trial and error to get the coloring done right.
 
@@ -116,15 +104,13 @@ If you are interested in orbit trapping techniques, you can learn more about it 
 
 Because GPUs are typically designed to work on a big ammounts of batched data on the vertex shader, they don't really like to work with high precision floating point calculations. The maximum precision you can get out your normal GLSL shader is a 16-bit floating point and even for that you need to do the following declaration on your shader code.
 
-```GLSL
+~~~GLSL
 precision highp float;
-```
+~~~
 
 This is an extreme limitation for the application I wanted to write: an almost infinite zoom into the mandelbrot set. Because of this, if I keep zooming in my application after almost 10 to 15 seconds I get the following renders.
 
-<p align="center">
-<img src=../assets/mandelbrot/mandelbrotprecision.png width="400" height="300"/>
-</p>
+![](../assets/mandelbrot/mandelbrotprecision.png)
 
 **This is not a compressed image**, it is exactly the render I get when I zoom to much due to floating point number representation limits in the GPU.
 
