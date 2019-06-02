@@ -4,6 +4,7 @@ title:  "Rendering the Mandelbrot Set with shaders"
 subtitle: "Using OpenGL and GLSL"
 date:   2019-06-02 22:49:00
 categories: [fractals]
+mathjax: true
 ---
 
 # Introduction
