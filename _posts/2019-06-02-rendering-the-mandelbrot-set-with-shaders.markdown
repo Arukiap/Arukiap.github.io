@@ -73,7 +73,7 @@ We just follow the exact function definition we listed before, and return a valu
 This produces the following image (Maximum number of iterations = 100):
 
 <p align="center">
-  <img src=../assets/mandelbrot/mandelbrot1bright.png/>
+<img src=../assets/mandelbrot/mandelbrot1bright.png/>
 </p>
 
 ## Zooming in
@@ -81,8 +81,8 @@ This produces the following image (Maximum number of iterations = 100):
 By implementing a simple interaction of zooming in and exploring the set, we can already start to see the complexity and beauty of this set.
 
 <p align="center">
-  <img src=../assets/mandelbrot/mandelbrot2bright.png width="400" height="300"/>
-  <img src=../assets/mandelbrot/mandelbrot3bright.png width="400" height="300"/>
+<img src=../assets/mandelbrot/mandelbrot2bright.png width="400" height="300"/>
+<img src=../assets/mandelbrot/mandelbrot3bright.png width="400" height="300"/>
 </p>
 
 But we surely don't want to stop here. While these images look great and mysterious, more beauty can be brought out of the plot representation of this set if we color it based on mathematical rules.
@@ -94,18 +94,18 @@ To color our mandelbrot plot, we are going to use a popular technique used to co
 A common point to compare the distance to is the origin (0,0). Doing so produces the following coloring of our set:
 
 <p align="center">
-  <img src=../assets/mandelbrot/mandelbrotOT1.png width="400" height="300"/>
-  <img src=../assets/mandelbrot/mandelbrotOT2.png width="400" height="300"/>
+<img src=../assets/mandelbrot/mandelbrotOT1.png width="400" height="300"/>
+<img src=../assets/mandelbrot/mandelbrotOT2.png width="400" height="300"/>
 </p>
 
 <p align="center">
-  <img src=../assets/mandelbrot/mandelbrotOT3.png width="400" height="300"/>
-  <img src=../assets/mandelbrot/mandelbrotOT4.png width="400" height="300"/>
+<img src=../assets/mandelbrot/mandelbrotOT3.png width="400" height="300"/>
+<img src=../assets/mandelbrot/mandelbrotOT4.png width="400" height="300"/>
 </p>
 
 <p align="center">
-  <img src=../assets/mandelbrot/mandelbrotOT7.png width="400" height="300"/>
-  <img src=../assets/mandelbrot/mandelbrotOT6.png width="400" height="300"/>
+<img src=../assets/mandelbrot/mandelbrotOT7.png width="400" height="300"/>
+<img src=../assets/mandelbrot/mandelbrotOT6.png width="400" height="300"/>
 </p>
 
 Because this is usually refered to as art, you can color the fractal however you feel like. Feel free to experiment: most of the images I posted here took a lot of trial and error to get the coloring done right.
@@ -123,7 +123,7 @@ precision highp float;
 This is an extreme limitation for the application I wanted to write: an almost infinite zoom into the mandelbrot set. Because of this, if I keep zooming in my application after almost 10 to 15 seconds I get the following renders.
 
 <p align="center">
-  <img src=../assets/mandelbrot/mandelbrotprecision.png width="400" height="300"/>
+<img src=../assets/mandelbrot/mandelbrotprecision.png width="400" height="300"/>
 </p>
 
 **This is not a compressed image**, it is exactly the render I get when I zoom to much due to floating point number representation limits in the GPU.
