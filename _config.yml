@@ -25,5 +25,6 @@ styles: [agate, androidstudio, arta, asceti, atelier-cave.dark, atelier-cave.lig
 exclude: ["README.md", "README.html"]
 
 # Build settings
-highlighter: null
 markdown: kramdown
+highlighter: rouge
+
