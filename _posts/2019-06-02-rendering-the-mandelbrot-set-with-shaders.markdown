@@ -62,7 +62,7 @@ $$ |(x,y)_z| <= 2 $$
 
 Now that we have our maths figured out, let's open up our fragment shader and write the core function of our application: the iteration over the function that defines the mandelbrot set.
 
-~~~ GLSL
+```glsl
 vec2 squareImaginary(vec2 number){
 	return vec2(
 		pow(number.x,2)-pow(number.y,2),
@@ -78,7 +78,7 @@ float iterateMandelbrot(vec2 coord){
 	}
 	return maxIterations;
 }
-~~~
+```
 
 This function runs once every pixel of the screen. The coord 2D vector represents the current selected pixel coordinates. This works great because in mandelbrot plots, the y axis represents the imaginary part of the complex number and the x the real part.
 
@@ -118,9 +118,9 @@ If you are interested in orbit trapping techniques, you can learn more about it 
 
 Because GPUs are typically designed to work on a big ammounts of batched data on the vertex shader, they don't really like to work with high precision floating point calculations. The maximum precision you can get out your normal GLSL shader is a 16-bit floating point and even for that you need to do the following declaration on your shader code.
 
-~~~ GLSL
+```glsl
 precision highp float;
-~~~
+```
 
 This is an extreme limitation for the application I wanted to write: an almost infinite zoom into the mandelbrot set. Because of this, if I keep zooming in my application after almost 10 to 15 seconds I get the following renders.
 
