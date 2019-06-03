@@ -62,7 +62,7 @@ $$ |(x,y)_z| <= 2 $$
 
 Now that we have our maths figured out, let's open up our fragment shader and write the core function of our application: the iteration over the function that defines the mandelbrot set.
 
-```GLSL
+```glsl
 vec2 squareImaginary(vec2 number){
 	return vec2(
 		pow(number.x,2)-pow(number.y,2),
@@ -118,7 +118,7 @@ If you are interested in orbit trapping techniques, you can learn more about it 
 
 Because GPUs are typically designed to work on a big ammounts of batched data on the vertex shader, they don't really like to work with high precision floating point calculations. The maximum precision you can get out your normal GLSL shader is a 16-bit floating point and even for that you need to do the following declaration on your shader code.
 
-```GLSL
+```glsl
 precision highp float;
 ```
 
