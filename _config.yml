@@ -26,5 +26,5 @@ exclude: ["README.md", "README.html"]
 
 # Build settings
 markdown: kramdown
-highlighter: rouge
+highlighter: null
 
