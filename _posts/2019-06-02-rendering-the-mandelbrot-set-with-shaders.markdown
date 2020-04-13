@@ -19,6 +19,8 @@ If you want to start learning to code shaders, I suggest taking a look at [Shade
 
 If you are feeling adventurous or can't depend on an internet connection, you can clone [this git repository](https://github.com/Arukiap/OpenGL-Shaders-Base) where I host a base C++ and OpenGL application that allows you to dive right into shader coding locally on your machine.
 
+The application we build in this post is also [available in a github repository](https://github.com/Arukiap/Mandelbrot). You can freely clone it and play around!
+
 I also greatly encourage you to visit [Inigo Quilez](https://www.iquilezles.org/www/articles/ftrapsgeometric/ftrapsgeometric.htm)'s website if you are insterested in fractal rendering techniques and the great explanation [The Art of Code](https://www.youtube.com/watch?v=6IWXkV82oyY) gives in his mandelbrot fractal introduction video. I largely based my development and learning through these two platforms.
 
 # The mandelbrot set
@@ -62,7 +64,7 @@ $$ |(x,y)_z| <= 2 $$
 
 Now that we have our maths figured out, let's open up our fragment shader and write the core function of our application: the iteration over the function that defines the mandelbrot set.
 
-```GLSL
+~~~GLSL
 vec2 squareImaginary(vec2 number){
 	return vec2(
 		pow(number.x,2)-pow(number.y,2),
@@ -78,7 +80,7 @@ float iterateMandelbrot(vec2 coord){
 	}
 	return maxIterations;
 }
-```
+~~~
 
 This function runs once every pixel of the screen. The coord 2D vector represents the current selected pixel coordinates. This works great because in mandelbrot plots, the y axis represents the imaginary part of the complex number and the x the real part.
 
@@ -92,8 +94,7 @@ This produces the following image (Maximum number of iterations = 100):
 
 By implementing a simple interaction of zooming in and exploring the set, we can already start to see the complexity and beauty of this set.
 
-![](/assets/mandelbrot/mandelbrot2bright.png)
-![](/assets/mandelbrot/mandelbrot3bright.png)
+![](/assets/mandelbrot/mandelbrot.gif)
 
 But we surely don't want to stop here. While these images look great and mysterious, more beauty can be brought out of the plot representation of this set if we color it based on mathematical rules.
 
@@ -118,9 +119,9 @@ If you are interested in orbit trapping techniques, you can learn more about it 
 
 Because GPUs are typically designed to work on a big ammounts of batched data on the vertex shader, they don't really like to work with high precision floating point calculations. The maximum precision you can get out your normal GLSL shader is a 16-bit floating point and even for that you need to do the following declaration on your shader code.
 
-```GLSL
+~~~GLSL
 precision highp float;
-```
+~~~
 
 This is an extreme limitation for the application I wanted to write: an almost infinite zoom into the mandelbrot set. Because of this, if I keep zooming in my application after almost 10 to 15 seconds I get the following renders.
 
